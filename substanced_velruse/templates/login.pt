@@ -1,0 +1,58 @@
+<div metal:use-macro="sdi_h.macros()['master']">
+
+  <div metal:fill-slot="main">
+    <form action="${url}" method="post">
+      <label> Username
+         <input type="text" name="login" value="${login}"/>
+      </label>
+      <label> Password
+         <input type="password" name="password" value="${password}"/>
+      </label>
+      <input type="submit" name="form.submitted" value="Log In" 
+             class="btn btn-primary"/>
+      <input type="hidden" name="csrf_token" 
+            value="${request.session.get_csrf_token()}"/>
+    </form>
+
+    <p>
+      <a href="${request.mgmt_path(request.root, '@@resetpassword')}">
+        Forgot your password?
+      </a>
+    </p>
+
+    <div tal:condition="providers">
+
+      <h3>Other login options</h3>
+      <p>
+        If you already have an account, you can also login using any of the following providers:
+      </p>
+
+      <form tal:condition="'github' in providers"
+            id="github" action="${login_url(request, 'github')}" method="post">
+        <input type="submit" value="Login with Github" />
+      </form>
+
+      <form tal:condition="'twitter' in providers"
+            id="twitter" action="${login_url(request, 'twitter')}" method="post">
+        <input type="submit" value="Login with Twitter" />
+      </form>
+
+      <form tal:condition="'google' in providers"
+            id="google" action="${login_url(request, 'google')}" method="post">
+        <input type="hidden" name="use_popup" value="false" />
+        <input type="hidden" name="openid_identifier" value="google.com" />
+        <input type="submit" value="Login with Google" />
+      </form>
+
+      <form tal:condition="'yahoo' in providers"
+            id="yahoo" action="${login_url(request, 'yahoo')}" method="post">
+        <input type="hidden" name="oauth" value="true" />
+        <input type="hidden" name="openid_identifier" value="yahoo.com" />
+        <input type="submit" value="Login with Yahoo" />
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
