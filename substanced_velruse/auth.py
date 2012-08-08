@@ -119,4 +119,3 @@ def includeme(config): # pragma: no cover
             consumer_key=settings['yahoo.consumer_key'],
             consumer_secret=settings['yahoo.consumer_secret'],
         )
-    config.scan('.')
