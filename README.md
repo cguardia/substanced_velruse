@@ -1,4 +1,4 @@
 substanced_velruse
 ==================
 
-Example add on for substanced that allows using velruse for authentication
+Example application for substanced that shows how to use velruse for authentication
