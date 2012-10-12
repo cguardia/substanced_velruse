@@ -16,7 +16,7 @@ from substanced.sdi import (
     check_csrf_token,
     )
 
-from substanced.service import find_service
+from substanced.content import find_service
 from substanced.util import oid_of
 
 from velruse import login_url as velruse_login_url
